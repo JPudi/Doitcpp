@@ -1,0 +1,83 @@
+Anna,Nowak,80010112345,600111222
+Zdzislawa,Skrzynska,04260168362,218819016
+Dariusz,Waskiewicz,52021561189,705152454
+Ewa,Marcinczyk,05252613385,803305282
+Agata,Chromik,53061365791,608897446
+Helena,Graban,64040267685,218819016
+Wojciech,Wladyka,04232467985,705152454
+Aneta,Wichrowska,63120995661,803305282
+Daniel,Plona,91051298179,608897446
+Honorata,Buchwald,52090631369,218819016
+Stefan,Paprzycki,74040532193,705152454
+Gertruda,Jaroszuk,86020186256,803305282
+Gertruda,Baranek,63071594861,608877446
+Alfred,Olejniczak,86112141839,218819016
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+struct Pacjent
+{
+std::string imie, nazwisko,pesel,nrtel;
+};
+
+int main()
+{
+	std::vector<Pacjent> pacjent;
+	Pacjent p;
+	std::ifstream plik("Pacjenci.csv");
+	if (plik)
+	{
+		while (getline(plik, p.imie, ','))
+		{
+			getline(plik, p.nazwisko, ',');
+			getline(plik, p.pesel, ',');
+			getline(plik, p.nrtel);
+			pacjent.push_back(p);
+		}
+		plik.close();
+	}
+	else
+		std::cerr << "Blad otwarcia pliku";
+
+	for (int i = 0; i < pacjent.size(); i++)
+	{
+		std::cout << pacjent[i].imie <<" " << pacjent[i].nazwisko <<" "<<  pacjent[i].pesel << " " << pacjent[i].nrtel<<std::endl;
+	}
+
+}
+//std::ofstream plik("dane.txt");
+//if (plik)
+//{
+//	for (int i = 0; i < 10; i++);
+//	plik >>
+//}
+//std::vector<Student> studenci;
+//Student s;
+//
+//std::cin >> s.im >> s.nazw >> s.sr;
+//
+//std::cout << s.im
+
+//std::vector<Student> studenci;
+//Student s;
+//std::ifstream plik("studenci.txt");
+//if (plik)
+//{
+//	while (getline(plik, s.im, ','))
+//	{
+//		getline(plik, s.nazw, ',');
+//		plik >> s.sr;
+//		studenci.push_back(s);
+//	}
+//	plik.close();
+//}
+//else
+//std::cerr << "Blad otwarcia pliku";
+//
+//for (int i = 0; i < studenci.size(); i++)
+//{
+//	std::cout << studenci[i].im << " " << studenci[i].nazw << "  " << studenci[i].sr;
+//}
+
